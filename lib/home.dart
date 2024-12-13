@@ -27,29 +27,32 @@ class _HomePageState extends State<HomePage> {
             Text('Explore o mundo')
           ],
         ),
-        actions: [
+        actions: const [
           SizedBox(
             width: 100,
             child: Icon(Icons.ac_unit_rounded),
           )
         ],
       ),
+
+
       body: Column(
         children: [
-          TextField(),
-          Row(
+          const TextField(),
+          const Row(
             children: [Text('Lugares populares'), Text('Ver tudo')],
           ),
-          Row(
-            children: [
+          const Flex( 
+            direction: Axis.horizontal , mainAxisAlignment: MainAxisAlignment.spaceEvenly,  
+            children:[
               Text('Mais visualizados'),
               Text('Nearby'),
               Text('Latest')
             ],
           ),
+        
           Flexible(
-            
-            child: ListView.builder(
+             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 10,
               itemBuilder: (context,index){
@@ -77,10 +80,10 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(icon: Icon(Icons.abc_outlined), label: 'd'),
           BottomNavigationBarItem(icon: Icon(Icons.abc_outlined), label: 'd')
         ],
-      )
+      ),
         
        
-      ,
+      
     );
   }
 }
