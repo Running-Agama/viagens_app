@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'explore.dart';
+import 'utils.dart';
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
   @override
@@ -7,7 +8,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+   List<dynamic> _array = [];
+
   int _index = 0;
+  @override
+  void initState() {
+    super.initState();
+  }
+  Future <void> api ()async{
+    final bagulhos = await Utils().consultadata();
+    setState(()  {
+      _array = bagulhos;
+    });
+    print(_array);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
