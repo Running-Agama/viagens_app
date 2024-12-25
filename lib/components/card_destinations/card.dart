@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
 
 class CardDestination extends StatefulWidget {
-  const CardDestination({super.key});
+  final String name;
+  final String city;
+  final String country;
+  final int rating;
+
+  const CardDestination({
+    required this.name,
+    required this.city,
+    required this.country,
+    required this.rating,
+  });
 
   @override
   _CardDestinationState createState() => _CardDestinationState();
 }
 
+
 class _CardDestinationState extends State<CardDestination> {
+  
+
   final TextStyle cardStyle = const TextStyle(
     color: Colors.white,
     fontSize: 14,
@@ -84,8 +97,9 @@ class _CardDestinationState extends State<CardDestination> {
                         padding: const EdgeInsets.all(10),
                         child: Row(
                           children: [
-                            Text('Mount Fuji, ', style: cardStyle),
-                            Text('Tokyo', style: cardStyle),
+                            //precisa fazer um scroll nos textos que excedem a largura
+                            Text('${widget.name}, ', style: cardStyle),
+                            Text(widget.country, style: cardStyle),
                           ],
                         ),
                       ),
@@ -97,12 +111,12 @@ class _CardDestinationState extends State<CardDestination> {
                       children: [
                         const Icon(Icons.location_on, color: Colors.white),
                         const SizedBox(width: 3),
-                        Text('Cidade,', style: subtituloStyle),
-                        Text('País', style: subtituloStyle),
+                        Text(widget.city + ', ', style: subtituloStyle),
+                        Text(widget.country, style: subtituloStyle),
                         Expanded(child: Container()),
                         const Icon(Icons.star, color: Colors.white),
                         const SizedBox(width: 3),
-                        Text('0.0', style: subtituloStyle),
+                        Text(widget.rating.toString(), style: subtituloStyle),
                       ],
                     ),
                   ),
