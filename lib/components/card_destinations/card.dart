@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
 
-class CardDestination extends StatelessWidget {
+class CardDestination extends StatefulWidget {
+  const CardDestination({super.key});
+
+  @override
+  _CardDestinationState createState() => _CardDestinationState();
+}
+
+class _CardDestinationState extends State<CardDestination> {
   final TextStyle cardStyle = const TextStyle(
     color: Colors.white,
-    fontSize: 14
+    fontSize: 14,
   );
   final TextStyle subtituloStyle = const TextStyle(
     color: Colors.white,
-    fontSize: 10
+    fontSize: 10,
   );
-  
+
+  bool isPressed = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,7 +36,7 @@ class CardDestination extends StatelessWidget {
             blurRadius: 3,
             spreadRadius: -1,
             offset: Offset(-1, 5),
-          )
+          ),
         ],
       ),
       width: 220,
@@ -36,65 +45,71 @@ class CardDestination extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-           Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
                   elevation: 0,
                   backgroundColor: Colors.transparent,
-                  minimumSize: Size(1, 3),
+                  shadowColor: Colors.transparent,
+                  minimumSize: Size(50, 30),
+                  padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   shape: RoundedRectangleBorder(
-                    
                     borderRadius: BorderRadius.circular(20),
-                    
-                  )
+                  ),
                 ),
-                onPressed: (){}, 
-                label: Icon(Icons.heart_broken_outlined
-                
-                )
-              )
-           ],),
+                onPressed: () {
+                  setState(() {
+                    isPressed = !isPressed;
+                  });
+                },
+                label: 
+                  isPressed 
+                  ? const Icon(Icons.favorite, color: Colors.red) 
+                  : const Icon(Icons.favorite_border, color: Colors.white)
 
+              ),
+            ],
+          ),
           Card(
-            color: Color.fromARGB(137, 0, 0, 0),
-            
+            color: const Color.fromARGB(137, 0, 0, 0),
             child: Padding(
-              padding: EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
               child: Column(
                 children: [
                   Row(
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         child: Row(
                           children: [
-                            Text('Mount Fuji, ', style: cardStyle,),
-                            Text('Tokyo', style: cardStyle)
+                            Text('Mount Fuji, ', style: cardStyle),
+                            Text('Tokyo', style: cardStyle),
                           ],
-                        ))
+                        ),
+                      ),
                     ],
                   ),
                   Padding(
-                    padding:  EdgeInsets.only(left: 5, bottom: 2, right: 5),
+                    padding: const EdgeInsets.only(left: 5, bottom: 2, right: 5),
                     child: Row(
-                      
                       children: [
-                        Icon(Icons.location_city, color: Colors.white),
-                        SizedBox(width: 3,),
-                        Text('Cidade,', style: subtituloStyle ),
-                        Text('País', style: subtituloStyle,),
+                        const Icon(Icons.location_on, color: Colors.white),
+                        const SizedBox(width: 3),
+                        Text('Cidade,', style: subtituloStyle),
+                        Text('País', style: subtituloStyle),
                         Expanded(child: Container()),
-                        Icon(Icons.star, color: Colors.white,),
-                        Text('0.0', style: subtituloStyle)
+                        const Icon(Icons.star, color: Colors.white),
+                        const SizedBox(width: 3),
+                        Text('0.0', style: subtituloStyle),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
-            )
-          )
+            ),
+          ),
         ],
       ),
     );

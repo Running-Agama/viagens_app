@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
       body: IndexedStack(
         index: _index,
         children: [
-          Explorar(),
+          ExplorarState(),
           Text('oi')
         ],
       ),
@@ -69,9 +69,7 @@ class _HomePageState extends State<HomePage> {
         selectedItemColor: Colors.black,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.abc_outlined), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.abc_outlined), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.abc_outlined), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.abc_outlined), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.abc_outlined), label: 'Histórico'),
         ],
       ),
     );
